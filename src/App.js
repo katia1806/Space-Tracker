@@ -2,7 +2,7 @@ import React from 'react';
 import ObjectList from './components/ObjectList';
 import Map from './components/Map';
 import Alert from './components/Alert';
-import './App.css'; 
+import './App.css';
 
 const App = () => {
   return (
@@ -12,31 +12,28 @@ const App = () => {
       </header>
       
       <main className="app-main">
-        
-        
-        <section className="info-section">
+        {/* Première paire : Liste des objets et carte */}
+        <div className="pair-section">
           <div className="object-list">
             <h2>🌍 Object List</h2>
             <ObjectList />
           </div>
           <div className="map-section">
-            <h2>🗺️ Map</h2>
             <Map endpoint="http://localhost:5001/objects" />
           </div>
-        </section>
-        <section className="alert-section">
-          <div className="alert-list">
-            <h2>⚠️ Alerts</h2>
+        </div>
+
+        {/* Deuxième paire : Liste des objets dangereux et carte */}
+        <div className="pair-section">
+          <div className="object-list">
+            <h2>⚠️ Dangerous Object List</h2>
             <Alert />
           </div>
           <div className="map-section">
-            <h2>🗺️ Alert Map</h2>
             <Map endpoint="http://localhost:5001/alerts" />
           </div>
-        </section>
-
+        </div>
       </main>
-      
     </div>
   );
 };

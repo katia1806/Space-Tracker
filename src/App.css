@@ -1,31 +1,57 @@
+/* Conteneur principal */
+.app-main {
+  display: flex;
+  flex-direction: column; /* Organise les paires verticalement */
+  gap: 20px; /* Espacement entre les paires */
+  padding: 20px; /* Espacement interne */
+}
+
+/* Section pour chaque paire (liste + carte) */
+.pair-section {
+  display: flex;
+  flex-direction: row; /* Aligne la liste et la carte côte à côte */
+  gap: 20px; /* Espacement entre la liste et la carte */
+  width: 100%;
+  height: 50%; /* Chaque paire occupe 50% de la hauteur */
+}
+
+/* Liste des objets */
+.object-list {
+  flex: 1; /* La liste occupe 50% de l'espace horizontal */
+  background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+  padding: 20px; /* Espacement interne */
+  overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
+  max-height: 100%; /* Prend toute la hauteur disponible */
+}
+
+/* Carte */
+.map-section {
+  flex: 1; /* La carte occupe 50% de l'espace horizontal */
+  background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+  padding: 20px; /* Espacement interne */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.leaflet-div-icon {
+  background: transparent !important; /* Supprime le fond par défaut */
+  border: none !important; /* Supprime les bordures */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+.emoji-icon {
+  text-align: center;
+  line-height: 1;
+  font-size: 24px; /* Taille des emojis */
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +61,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} 

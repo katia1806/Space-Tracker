@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 
@@ -19,17 +20,26 @@ const Map = ({ endpoint }) => {
       .catch(error => console.error('Error fetching objects:', error));
   }, [endpoint]);
 
+  const createEmojiIcon = (emoji) => {
+    return L.divIcon({
+      className: 'emoji-icon leaflet-div-icon',
+      html: `<div>${emoji}</div>`,
+      iconSize: [32, 32], // Size of the emoji marker
+      iconAnchor: [16, 16], // Center the icon
+    });
+  };
+
   return (
     <MapContainer
-      center={[0, 0]} // Centre de la carte (latitude, longitude)
-      zoom={2} // Niveau de zoom initial
-      minZoom={2} // Niveau de zoom minimum
-      maxZoom={10} // Niveau de zoom maximum
+      center={[0, 0]}
+      zoom={2}
+      minZoom={2}
+      maxZoom={10}
       maxBounds={[
-        [-90, -180], // Limite sud-ouest (latitude, longitude)
-        [90, 180],   // Limite nord-est (latitude, longitude)
-      ]} // Limites géographiques pour empêcher le défilement infini
-      maxBoundsViscosity={1.0} // Empêche de sortir des limites
+        [-90, -180],
+        [90, 180],
+      ]}
+      maxBoundsViscosity={1.0}
       style={{ height: '400px', width: '100%' }}
     >
       <TileLayer
@@ -40,6 +50,7 @@ const Map = ({ endpoint }) => {
         <Marker
           key={obj.id}
           position={[obj.position.y, obj.position.x]}
+          icon={createEmojiIcon(obj.type === 'astéroïde' ? '☄️' : obj.type === 'météorite' ? '🌑' : '🌠')}
         >
           <Popup>
             <strong>{obj.type}</strong><br />
